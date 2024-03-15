@@ -206,3 +206,18 @@ SELECT * FROM player
 SELECT * FROM team
 SELECT * FROM schedule
 SELECT * FROM stadium
+
+INSERT INTO menus (item, category)
+VALUES
+('0-종료', 'x-Exit'),
+('j-회원가입', 'u-User'),
+('l-로그인','b-Board'),
+('i-ID검색', 'm-Account'),
+('p-비번변경', 'c-Crawler'),
+('w-탈퇴', 'a-Article'),
+('ls-회원목록', ''),
+('n-이름검색',''),
+('j-직업검색',''),
+('c-회원수',''),
+('touch-테이블생성',''),
+('rm-테이블삭제','');

@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 public enum UserRouter {
 
     EXIT("x", sc -> {
-        return;
+        System.exit(0);
     }),
     JOIN("j", sc -> UserController.getInstance().join(sc)),
     LOGIN("l", sc -> UserController.getInstance().login(sc)),
@@ -20,7 +20,7 @@ public enum UserRouter {
     WITHDRAW("w", sc -> UserController.getInstance().delete(sc)),
     LIST("ls", sc -> UserController.getInstance().findAll()),
     NAMESEARCH("n", sc -> UserController.getInstance().findUsersByName(sc)),
-    JOBSEARCH("j", sc -> UserController.getInstance().findUsersByJob(sc)),
+    JOBSEARCH("job", sc -> UserController.getInstance().findUsersByJob(sc)),
     MEMCOUNT("c", sc -> UserController.getInstance().count()),
     CREATETABLE("touch", sc -> {
         try {
@@ -50,8 +50,8 @@ public enum UserRouter {
                 "jdbc:mysql://localhost:3306/vondb",
                 "root",
                 "rootroot");
-        String sql = "SELECT item FROM menus";
-        con.prepareStatement(sql).executeQuery();
+                con.prepareStatement("SELECT item FROM menus")
+                        .executeQuery();
 
         getPage(sc.next()).consumer.accept(sc);
     }

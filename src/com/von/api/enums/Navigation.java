@@ -7,6 +7,8 @@ import com.von.api.crawler.CrawlerView;
 import com.von.api.user.UserView;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -54,14 +56,13 @@ public enum Navigation {
         this.consumer = consumer;
     }
 
-    public static void getPage(Scanner sc) {
-        System.out.println("=== x-Exit " +
-                "u-User " +
-                "b-Board " +
-                "m-Account " +
-                "c-Crawler " +
-                "a-Article"
-                + "===");
+    public static void getPage(Scanner sc) throws SQLException {
+        Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/vondb",
+                "root",
+                "rootroot");
+                con.prepareStatement("SELECT category FROM menus")
+                        .executeQuery();
         getP(sc.next()).consumer.accept(sc);
     }
 
